@@ -227,14 +227,38 @@ import { app } from "../../scripts/app.js";
 		// --------------------------------------------------------
 
 		static applyNodeTypeTranslationEx(nodeName) {
-			// 不再修改全局 nodeType.title，避免破坏节点ID显示等其他插件
-			// 实例级翻译由 applyNodeTranslation 处理
+			if (!window.LiteGraph || !LiteGraph.registered_node_types) return;
+			const nodeType = LiteGraph.registered_node_types[nodeName];
+			if (!nodeType) return;
+
+			const nodesT = this.T.Nodes;
+			const class_type = nodeType.comfyClass || nodeType.type;
+			if (!class_type) return;
+
+			if (nodesT.hasOwnProperty(class_type)) {
+				const t = nodesT[class_type];
+				if (t["title"] && !hasNativeTranslation(nodeType, 'title')) {
+					nodeType.title = t["title"];
+				}
+			}
 		}
 
 		/** 批量翻译所有已注册节点类型 */
 		static applyNodeTypeTranslation() {
-			// 不再修改全局 nodeType.title，避免破坏节点ID显示等其他插件
-			// 实例级翻译由 applyNodeTranslation 处理
+			if (!window.LiteGraph || !LiteGraph.registered_node_types) return;
+			const nodesT = this.T.Nodes;
+			for (const nodeName in LiteGraph.registered_node_types) {
+				const nodeType = LiteGraph.registered_node_types[nodeName];
+				if (!nodeType) continue;
+				const class_type = nodeType.comfyClass || nodeType.type;
+				if (!class_type) continue;
+				if (nodesT.hasOwnProperty(class_type)) {
+					const t = nodesT[class_type];
+					if (t["title"] && !hasNativeTranslation(nodeType, 'title')) {
+						nodeType.title = t["title"];
+					}
+				}
+			}
 		}
 
 		// --------------------------------------------------------
@@ -313,13 +337,14 @@ import { app } from "../../scripts/app.js";
 					});
 				}
 
-				// 翻译标题（仅实例级，不修改全局 nodeType/constructor.title）
+				// 翻译标题
 				if (t.hasOwnProperty("title") && !hasNativeTranslation(node, 'title')) {
 					const isCustomTitle = node._dd_custom_title ||
 						(node.title && node.title !== class_type && node.title !== t["title"]);
 					if (!isCustomTitle) {
 						if (!node._original_title) node._original_title = node.title || class_type;
 						node.title = t["title"];
+						if (node.constructor) node.constructor.title = t["title"];
 					}
 				}
 
@@ -610,11 +635,7 @@ import { app } from "../../scripts/app.js";
 
 		/** 是否应跳过 */
 		tSkip(node) {
-			if (!node) return true;
-			// 跳过 Canvas 和 SVG 元素（避免干扰节点渲染）
-			if (node.nodeName === "CANVAS") return true;
-			if (node.nodeName === "svg" || node.nodeName === "path") return true;
-			if (!node.classList) return false;
+			if (!node || !node.classList) return false;
 			return this.excludeClass.some(cls => node.classList.contains(cls));
 		}
 
@@ -635,8 +656,6 @@ import { app } from "../../scripts/app.js";
 
 		if (target.nodeType === Node.TEXT_NODE) {
 				if (target.nodeValue) {
-					// 跳过含节点ID格式的文本（如 "Load Image #163"）
-					if (/#\d{3,}/.test(target.nodeValue)) return;
 					const t = this.MT(target.nodeValue);
 					if (t) target.nodeValue = t;
 				}
@@ -728,9 +747,9 @@ function applyMenuTranslation() {
 	if (menuTranslationApplied) return;
 	menuTranslationApplied = true;
 
-	// 不再对 .litegraph 全文翻译（会和 canvas 节点渲染、节点ID显示冲突）
-	// const litegraph = document.querySelector(".litegraph");
-	// if (litegraph) texe.translateAllText(litegraph);
+	// 初始翻译 litegraph 区域
+	const litegraph = document.querySelector(".litegraph");
+	if (litegraph) texe.translateAllText(litegraph);
 
 	// 翻译 comfy-modal
 	for (const node of document.querySelectorAll(".comfy-modal")) {
