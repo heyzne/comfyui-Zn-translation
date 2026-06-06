@@ -1,0 +1,468 @@
+{
+  "KSampler": {
+    "title": "K采样器",
+    "inputs": {
+      "model": "模型",
+      "positive": "正向提示词",
+      "negative": "负向提示词",
+      "latent_image": "潜空间图像"
+    },
+    "widgets": {
+      "seed": "种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "sampler_name": "采样器",
+      "scheduler": "调度器",
+      "denoise": "降噪强度"
+    },
+    "outputs": {
+      "LATENT": "潜空间"
+    }
+  },
+  "KSamplerAdvanced": {
+    "title": "K采样器(高级)",
+    "inputs": {
+      "model": "模型",
+      "positive": "正向提示词",
+      "negative": "负向提示词",
+      "latent_image": "潜空间图像",
+      "noise": "噪声"
+    },
+    "widgets": {
+      "add_noise": "添加噪声",
+      "noise_seed": "噪声种子",
+      "steps": "步数",
+      "cfg": "CFG",
+      "sampler_name": "采样器",
+      "scheduler": "调度器",
+      "start_at_step": "起始步",
+      "end_at_step": "结束步",
+      "return_with_leftover_noise": "返回剩余噪声"
+    },
+    "outputs": {
+      "LATENT": "潜空间"
+    }
+  },
+  "SamplerCustom": {
+    "title": "自定义采样器",
+    "inputs": {
+      "model": "模型",
+      "positive": "正向提示词",
+      "negative": "负向提示词",
+      "sampler": "采样器",
+      "sigmas": "Sigmas",
+      "latent_image": "潜空间图像",
+      "noise": "噪声"
+    },
+    "outputs": {
+      "LATENT": "潜空间"
+    }
+  },
+  "CheckpointLoaderSimple": {
+    "title": "简易模型加载器",
+    "widgets": {
+      "ckpt_name": "模型名称"
+    },
+    "outputs": {
+      "MODEL": "模型",
+      "CLIP": "CLIP",
+      "VAE": "VAE"
+    }
+  },
+  "CheckpointLoader": {
+    "title": "模型加载器",
+    "widgets": {
+      "ckpt_name": "模型名称",
+      "config_name": "配置名称"
+    },
+    "outputs": {
+      "MODEL": "模型",
+      "CLIP": "CLIP",
+      "VAE": "VAE"
+    }
+  },
+  "CLIPLoader": {
+    "title": "CLIP加载器",
+    "widgets": {
+      "clip_name": "CLIP名称",
+      "type": "类型"
+    },
+    "outputs": {
+      "CLIP": "CLIP"
+    }
+  },
+  "VAELoader": {
+    "title": "VAE加载器",
+    "widgets": {
+      "vae_name": "VAE名称"
+    },
+    "outputs": {
+      "VAE": "VAE"
+    }
+  },
+  "ControlNetLoader": {
+    "title": "ControlNet加载器",
+    "widgets": {
+      "control_net_name": "ControlNet名称"
+    },
+    "outputs": {
+      "CONTROL_NET": "ControlNet"
+    }
+  },
+  "UpscaleModelLoader": {
+    "title": "放大模型加载器",
+    "widgets": {
+      "model_name": "模型名称"
+    },
+    "outputs": {
+      "UPSCALE_MODEL": "放大模型"
+    }
+  },
+  "LoraLoader": {
+    "title": "LoRA加载器",
+    "inputs": {
+      "model": "模型",
+      "clip": "CLIP"
+    },
+    "widgets": {
+      "lora_name": "LoRA名称",
+      "strength_model": "模型强度",
+      "strength_clip": "CLIP强度"
+    },
+    "outputs": {
+      "MODEL": "模型",
+      "CLIP": "CLIP"
+    }
+  },
+  "CLIPTextEncode": {
+    "title": "CLIP文本编码",
+    "inputs": {
+      "clip": "CLIP"
+    },
+    "widgets": {
+      "text": "文本"
+    },
+    "outputs": {
+      "CONDITIONING": "条件"
+    }
+  },
+  "CLIP Vision Encode": {
+    "title": "CLIP视觉编码",
+    "inputs": {
+      "clip_vision": "CLIP视觉",
+      "image": "图像"
+    },
+    "outputs": {
+      "CLIP_VISION_OUTPUT": "CLIP视觉输出"
+    }
+  },
+  "VAEDecode": {
+    "title": "VAE解码",
+    "inputs": {
+      "samples": "样本",
+      "vae": "VAE"
+    },
+    "outputs": {
+      "IMAGE": "图像"
+    }
+  },
+  "VAEEncode": {
+    "title": "VAE编码",
+    "inputs": {
+      "pixels": "像素",
+      "vae": "VAE"
+    },
+    "outputs": {
+      "LATENT": "潜空间"
+    }
+  },
+  "EmptyLatentImage": {
+    "title": "空潜空间图像",
+    "widgets": {
+      "width": "宽度",
+      "height": "高度",
+      "batch_size": "批次大小"
+    },
+    "outputs": {
+      "LATENT": "潜空间"
+    }
+  },
+  "LatentUpscale": {
+    "title": "潜空间放大",
+    "inputs": {
+      "samples": "样本"
+    },
+    "widgets": {
+      "upscale_method": "放大方法",
+      "width": "宽度",
+      "height": "高度",
+      "crop": "裁剪"
+    },
+    "outputs": {
+      "LATENT": "潜空间"
+    }
+  },
+  "LatentUpscaleBy": {
+    "title": "潜空间按比例放大",
+    "inputs": {
+      "samples": "样本"
+    },
+    "widgets": {
+      "scale_by": "缩放比例"
+    },
+    "outputs": {
+      "LATENT": "潜空间"
+    }
+  },
+  "ConditioningCombine": {
+    "title": "条件合并",
+    "inputs": {
+      "conditioning_1": "条件1",
+      "conditioning_2": "条件2"
+    },
+    "outputs": {
+      "CONDITIONING": "条件"
+    }
+  },
+  "ConditioningAverage": {
+    "title": "条件平均",
+    "inputs": {
+      "conditioning_to": "目标条件",
+      "conditioning_from": "来源条件"
+    },
+    "widgets": {
+      "conditioning_to_strength": "目标强度",
+      "conditioning_from_strength": "来源强度"
+    },
+    "outputs": {
+      "CONDITIONING": "条件"
+    }
+  },
+  "ConditioningSetArea": {
+    "title": "条件区域设置",
+    "inputs": {
+      "conditioning": "条件"
+    },
+    "widgets": {
+      "width": "宽度",
+      "height": "高度",
+      "x": "X坐标",
+      "y": "Y坐标",
+      "strength": "强度"
+    },
+    "outputs": {
+      "CONDITIONING": "条件"
+    }
+  },
+  "ConditioningZeroOut": {
+    "title": "条件归零",
+    "inputs": {
+      "conditioning": "条件"
+    },
+    "outputs": {
+      "CONDITIONING": "条件"
+    }
+  },
+  "SaveImage": {
+    "title": "保存图像",
+    "inputs": {
+      "images": "图像"
+    },
+    "widgets": {
+      "filename_prefix": "文件名前缀"
+    }
+  },
+  "LoadImage": {
+    "title": "加载图像",
+    "widgets": {
+      "image": "图像文件"
+    },
+    "outputs": {
+      "IMAGE": "图像",
+      "MASK": "遮罩"
+    }
+  },
+  "ImageScale": {
+    "title": "图像缩放",
+    "inputs": {
+      "image": "图像"
+    },
+    "widgets": {
+      "upscale_method": "放大方法",
+      "width": "宽度",
+      "height": "高度",
+      "crop": "裁剪"
+    },
+    "outputs": {
+      "IMAGE": "图像"
+    }
+  },
+  "ImageScaleBy": {
+    "title": "图像按比例缩放",
+    "inputs": {
+      "image": "图像"
+    },
+    "widgets": {
+      "upscale_method": "放大方法",
+      "scale_by": "缩放比例"
+    },
+    "outputs": {
+      "IMAGE": "图像"
+    }
+  },
+  "ImageUpscaleWithModel": {
+    "title": "使用模型放大图像",
+    "inputs": {
+      "upscale_model": "放大模型",
+      "image": "图像"
+    },
+    "outputs": {
+      "IMAGE": "图像"
+    }
+  },
+  "ImageInvert": {
+    "title": "图像反色",
+    "inputs": {
+      "image": "图像"
+    },
+    "outputs": {
+      "IMAGE": "图像"
+    }
+  },
+  "ImageBlend": {
+    "title": "图像混合",
+    "inputs": {
+      "image1": "图像1",
+      "image2": "图像2"
+    },
+    "widgets": {
+      "blend_factor": "混合系数",
+      "blend_mode": "混合模式"
+    },
+    "outputs": {
+      "IMAGE": "图像"
+    }
+  },
+  "ImageCompositeMasked": {
+    "title": "遮罩图像合成",
+    "inputs": {
+      "destination": "目标",
+      "source": "源",
+      "mask": "遮罩"
+    },
+    "widgets": {
+      "x": "X坐标",
+      "y": "Y坐标",
+      "resize_source": "调整源尺寸"
+    },
+    "outputs": {
+      "IMAGE": "图像"
+    }
+  },
+  "MaskComposite": {
+    "title": "遮罩合成",
+    "inputs": {
+      "destination": "目标",
+      "source": "源"
+    },
+    "widgets": {
+      "x": "X坐标",
+      "y": "Y坐标",
+      "operation": "操作"
+    },
+    "outputs": {
+      "MASK": "遮罩"
+    }
+  },
+  "FreeU": {
+    "title": "FreeU",
+    "inputs": {
+      "model": "模型"
+    },
+    "widgets": {
+      "b1": "b1",
+      "b2": "b2",
+      "s1": "s1",
+      "s2": "s2"
+    },
+    "outputs": {
+      "MODEL": "模型"
+    }
+  },
+  "CLIPTextEncodeSDXL": {
+    "title": "CLIP文本编码(SDXL)",
+    "inputs": {
+      "clip": "CLIP"
+    },
+    "widgets": {
+      "width": "宽度",
+      "height": "高度",
+      "target_width": "目标宽度",
+      "target_height": "目标高度",
+      "text_g": "全局文本",
+      "text_l": "局部文本",
+      "crop_w": "裁剪宽度",
+      "crop_h": "裁剪高度"
+    },
+    "outputs": {
+      "CONDITIONING": "条件"
+    }
+  },
+  "ControlNetApply": {
+    "title": "应用ControlNet",
+    "inputs": {
+      "conditioning": "条件",
+      "control_net": "ControlNet",
+      "image": "图像"
+    },
+    "widgets": {
+      "strength": "强度"
+    },
+    "outputs": {
+      "CONDITIONING": "条件"
+    }
+  },
+  "ControlNetApplyAdvanced": {
+    "title": "应用ControlNet(高级)",
+    "inputs": {
+      "positive": "正向条件",
+      "negative": "负向条件",
+      "control_net": "ControlNet",
+      "image": "图像"
+    },
+    "widgets": {
+      "strength": "强度",
+      "start_percent": "起始百分比",
+      "end_percent": "结束百分比"
+    },
+    "outputs": {
+      "CONDITIONING": "条件"
+    }
+  },
+  "ImagePadForOutpaint": {
+    "title": "外绘填充",
+    "inputs": {
+      "image": "图像"
+    },
+    "widgets": {
+      "left": "左侧",
+      "top": "顶部",
+      "right": "右侧",
+      "bottom": "底部",
+      "feathering": "羽化"
+    },
+    "outputs": {
+      "IMAGE": "图像",
+      "MASK": "遮罩"
+    }
+  },
+  "Noise": {
+    "title": "噪声",
+    "widgets": {
+      "noise_seed": "噪声种子"
+    },
+    "outputs": {
+      "NOISE": "噪声"
+    }
+  }
+}
