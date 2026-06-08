@@ -464,5 +464,61 @@
     "outputs": {
       "NOISE": "噪声"
     }
+  },
+  "Blockify Mask": {
+    "title": "方块化遮罩",
+    "inputs": {
+      "mask": "遮罩"
+    },
+    "widgets": {
+      "block_size": "方块大小",
+      "device": "设备"
+    },
+    "outputs": {
+      "MASK": "遮罩"
+    }
+  },
+  "Draw Mask On Image": {
+    "title": "在图像上绘制遮罩",
+    "inputs": {
+      "Image": "图像",
+      "images": "图像",
+      "mask": "遮罩"
+    },
+    "widgets": {
+      "color": "颜色",
+      "device": "设备"
+    },
+    "outputs": {
+      "IMAGE": "图像"
+    }
+  },
+  "Grow Mask With Blur": {
+    "title": "模糊扩展遮罩",
+    "widgets": {
+      "expand": "扩展",
+      "Incrementalexpandrate": "增量扩展率",
+      "tapered_corners": "锥形边角",
+      "flip_input": "反转输入",
+      "blur_radius": "模糊半径",
+      "lerp_alpha": "插值Alpha",
+      "decay_factor": "衰减因子",
+      "fill_holes": "填充孔洞"
+    }
+  },
+  "VHS_VideoCombine": {
+    "title": "视频合成",
+    "widgets": {
+      "frame_rate": "帧率",
+      "loop_count": "循环次数",
+      "filename_prefix": "文件名前缀",
+      "format": "格式",
+      "pix_fmt": "像素格式",
+      "crf": "CRF",
+      "save_metadata": "保存元数据",
+      "trim_to_audio": "裁剪至音频长度",
+      "Ping-Pong": "乒乓播放",
+      "save_output_folder": "保存到输出文件夹"
+    }
   }
 }
